@@ -16,13 +16,12 @@ async function signup(parent, args, context, info) {
 }
 
 async function login(parent, args, context, info) {
-    // 1
+
     const user = await context.db.query.user({ where: { email: args.email } }, ` { id password } `)
     if (!user) {
         throw new Error('No such user found')
     }
 
-    // 2
     const valid = await bcrypt.compare(args.password, user.password)
     if (!valid) {
         throw new Error('Invalid password')
@@ -30,7 +29,6 @@ async function login(parent, args, context, info) {
 
     const token = jwt.sign({ userId: user.id }, APP_SECRET)
 
-    // 3
     return {
         token,
         user,
@@ -38,7 +36,7 @@ async function login(parent, args, context, info) {
 }
 
 function post(parent, args, context, info) {
-    const userId = getUserId(context)
+    const userId = getUserId(context);
     return context.db.mutation.createLink(
         {
             data: {
