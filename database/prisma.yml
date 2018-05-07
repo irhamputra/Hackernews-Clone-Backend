@@ -1,0 +1,12 @@
+#service: hackernews-node
+
+#stage: dev
+
+
+datamodel: datamodel.graphql
+
+secret: mysecret123
+#cluster: muhamad-irham-prasetyo-0bea6f/prisma-us1
+#endpoint: https://us1.prisma.sh/muhamad-irham-prasetyo-0bea6f/hackernews-node/dev
+
+endpoint: https://us1.prisma.sh/muhamad-irham-prasetyo-0bea6f/hackernews-node/dev
